@@ -85,26 +85,29 @@ function hoursToMinutes(movies) {
   const minutosDuracion = movies.map((movie) => {
     const duracionesPorPartes = movie.duration.split(' ');
     let minutosTotales = 0;
-    for (const partes of duracionesPorPartes){
-      if(partes.includes('h')){
+    for (const partes of duracionesPorPartes) {
+      if (partes.includes('h')) {
         minutosTotales += parseInt(partes) * 60;
-      } else if (partes.includes('min')){
+      } else if (partes.includes('min')) {
         minutosTotales += parseInt(partes);
       }
     }
-    return{
+    return {
       ...movie,
       duration: minutosTotales
     };
-  
+
   });
   console.log('EXERCISE 7 ->', minutosDuracion);
   return minutosDuracion;
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(movies, year) {
+  const movieYear = [movies.filter(movie => movie.year === year).sort((a, b) => b.score - a.score)[0]];
+
+  console.log('EXERCICE 8 ->', movieYear);
+  return movieYear;
 }
 
 
